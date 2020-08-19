@@ -17,10 +17,13 @@ class Stack:
         self.storage = []
 
     def __len__(self):
-        pass
+        return len(self.storage)
 
     def push(self, value):
-        pass
+        return self.storage.append(value)
 
     def pop(self):
-        pass
+        if len(self.storage) == 0:
+            self.storage == None
+        else:
+            return self.storage.pop()
