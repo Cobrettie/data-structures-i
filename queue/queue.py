@@ -27,6 +27,6 @@ class Queue:
     def dequeue(self):
         first_index = 0
         if len(self.storage) == 0:
-            self.storage == None
+            return None
         else:
             return self.storage.pop(first_index)
