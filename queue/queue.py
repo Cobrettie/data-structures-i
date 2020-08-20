@@ -4,6 +4,28 @@ return elements in First In First Out order.
 
 1. Implement the Queue class using an array as the underlying storage structure.
    Make sure the Queue tests pass.
+"""
+
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         return len(self.storage)
+
+#     def enqueue(self, value):
+#         return self.storage.append(value)
+
+#     def dequeue(self):
+#         first_index = 0
+#         if len(self.storage) == 0:
+#             return None
+#         else:
+#             return self.storage.pop(first_index)
+
+
+"""
 2. Re-implement the Queue class, this time using the linked list implementation
    as the underlying storage structure.
    Make sure the Queue tests pass.
@@ -13,20 +35,22 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
+from linked_list import LinkedList
+
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = LinkedList()
     
     def __len__(self):
         return len(self.storage)
 
     def enqueue(self, value):
-        return self.storage.append(value)
+        return self.storage.add_to_tail(value)
 
     def dequeue(self):
-        first_index = 0
         if len(self.storage) == 0:
             return None
         else:
-            return self.storage.pop(first_index)
+            return self.storage.remove_head()
