@@ -51,8 +51,22 @@ class LinkedList:
             self.length = self.length - 1
             return current_head.value
     def remove_tail(self):
-        pass
         # Remove Tail:
+        # if empty:
+        if self.tail is None:
+            return None
+
+        # list of 1 element
+        if self.head == self.tail:
+        # save current_tail.value
+            current_tail = self.tail
+        # set self.tail to None
+            self.tail = None
+        # set self.head to None
+            self.head = None
+            self.length -= 1
+            return current_tail.value
+
         # Check if it's there
         # General case:
         # Start at head and iterate to the next-to-last node
@@ -65,3 +79,28 @@ class LinkedList:
         # Save the current_tail.value
         # Set self.tail to None
         # Set self.head to None
+
+    def add_to_head(self):
+        pass
+    # 1 - is there a head?
+    # 2 - if no head/empty list
+        # create new node with next = None
+        # set self.head = new node
+        # set self.tail = new node
+    # 3 - if head:
+        # create new node
+        # new_node.next = self.head
+        # set self.head = new_node
+        # increment self.length
+
+    def remove_at_index(self, index):
+        pass
+        # check if list length greaater than i
+            # if not, return None
+        # remove at index [i]
+        # 1 - iterate through loop i times
+            # current = self.head
+            # for i times...
+                # current = current.next
+        # 2 - To_remove = cur_node.next
+        # 3 - Cur_node.next = cur_node.next.next
