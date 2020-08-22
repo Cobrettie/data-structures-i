@@ -9,6 +9,8 @@ class LinkedList:
         self.length = 0
     def __str__(self):
         pass
+    def __len__(self):
+        return self.length
     def add_to_tail(self, value):
         # Check if there's a tail
         # If there is no tail (empty list)
@@ -52,55 +54,73 @@ class LinkedList:
             return current_head.value
     def remove_tail(self):
         # Remove Tail:
-        # if empty:
         if self.tail is None:
             return None
-
-        # list of 1 element
+        # List of 1 element:
         if self.head == self.tail:
-        # save current_tail.value
+        # Save the current_tail.value
             current_tail = self.tail
-        # set self.tail to None
+        # Set self.tail to None
             self.tail = None
-        # set self.head to None
+        # Set self.head to None
             self.head = None
-            self.length -= 1
+            self.length = self.length - 1
             return current_tail.value
-
         # Check if it's there
         # General case:
+        else:
         # Start at head and iterate to the next-to-last node
+            current_node = self.head
         # Stop when current_node.next == self.tail
+            while current_node.next != self.tail:
+                current_node = current_node.next
+            # Once we exit the while loop, current_node is pointing to the node right before self.tail
         # Save the current_tail value
+            current_tail = self.tail
         # Set self.tail to current_node
+            self.tail = current_node
         # Set current_node.next to None
-        #
-        # List of 1 element:
-        # Save the current_tail.value
-        # Set self.tail to None
-        # Set self.head to None
-
-    def add_to_head(self):
-        pass
-    # 1 - is there a head?
-    # 2 - if no head/empty list
-        # create new node with next = None
-        # set self.head = new node
-        # set self.tail = new node
-    # 3 - if head:
-        # create new node
-        # new_node.next = self.head
-        # set self.head = new_node
+            current_node.next = None
+            self.length = self.length - 1
+            return current_tail.value
+    def add_to_head(self, value):
+        # If no head / empty list:
+        if self.head is None:
+        # Create the new node with next = None
+            new_node = Node(value, None)
+        #  Set self.head = new node
+            self.head = new_node
+        # Set self.tail = new node
+            self.tail = new_node
         # increment self.length
-
+            self.length += 1
+        else:
+        # If head:
+        # Create the new node
+            new_node = Node(value, self.head)
+        # New_node.next = self.head
+        # Set self.head = new_node
+            self.head = new_node
+        # increment self.length
+            self.length += 1
     def remove_at_index(self, index):
-        pass
-        # check if list length greaater than i
-            # if not, return None
-        # remove at index [i]
-        # 1 - iterate through loop i times
-            # current = self.head
-            # for i times...
-                # current = current.next
-        # 2 - To_remove = cur_node.next
-        # 3 - Cur_node.next = cur_node.next.next
+        # Remove at index i:
+        # 0) Check that length > i. If not, return None
+        if index >= self.length:
+            return None
+        if self.length == 1 and index == 0:
+            target = self.head
+            self.head = None
+            self.tail = None
+            self.length = self.length - 1
+            return target.value
+        # Iterate through the loop i-1 times:
+        prev_node = self.head
+        for i in range(index - 1):
+        # This will get us to prev_node points to the node before the target node
+            prev_node = prev_node.next
+        target = prev_node.next
+        prev_node.next = target.next
+        target.next = None
+        self.length = self.length - 1
+        return target.value
