@@ -1,5 +1,5 @@
 class Node:
-    __slots__ = ['value', 'next']
+    # __slots__ = ['value', 'next']
 
     def __init__(self, value, next=None):
         self.value = value
@@ -8,7 +8,7 @@ class Node:
 
 class LinkedList:
 
-    __slots__ = ['head', 'tail', 'length']
+    # __slots__ = ['head', 'tail', 'length']
 
     def __init__(self):
         self.head: Node = None
