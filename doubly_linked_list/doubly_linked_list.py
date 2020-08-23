@@ -161,5 +161,6 @@ class DoublyLinkedList:
                 current_max = current_node.value
             # set current_node to next node in list to keep checking conditions
             current_node = current_node.next
-            return current_max
+        
+        return current_max
 
