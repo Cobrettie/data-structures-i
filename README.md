@@ -14,7 +14,7 @@ Stretch Goals:
 
 ## Completion Requirements
  * [x] Module 1: Implement the Stack and Queue classes using built-in Python lists and the Node and LinkedList classes you created during the Module 1 Guided Project.
- * Module 2: Implement the Doubly Linked List class
+ * [x] Module 2: Implement the Doubly Linked List class
  * Module 3: Implement the Binary Search Tree class
  * Module 4: Implement traversal methods on Binary Search Trees
  
@@ -36,7 +36,7 @@ Stretch Goals:
 
 ### Doubly Linked Lists
  * [x] The `ListNode` class, which represents a single node in the doubly-linked list, has already been implemented for you. Inspect this code and try to understand what it is doing to the best of your ability.
- * The `DoublyLinkedList` class itself should have the methods: `add_to_head`, `add_to_tail`, `remove_from_head`, `remove_from_tail`, `move_to_front`, `move_to_end`, `delete`, and `get_max`.
+ * [x] The `DoublyLinkedList` class itself should have the methods: `add_to_head`, `add_to_tail`, `remove_from_head`, `remove_from_tail`, `move_to_front`, `move_to_end`, `delete`, and `get_max`.
    * `add_to_head` replaces the head of the list with a new value that is passed in.
    * `add_to_tail` replaces the tail of the list with a new value that is passed in.
    * `remove_from_head` removes the head node and returns the value stored in it.
