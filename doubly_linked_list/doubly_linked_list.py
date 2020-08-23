@@ -7,6 +7,12 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+
+    def delete(self):
+        if self.prev:
+                self.prev.next = self.next # point self .prev .next value to self next value
+        if self.next:
+            self.next.prev = self.prev # point self .next .prev value to self .prev value
             
 """
 Our doubly-linked list class. It holds references to 
@@ -69,13 +75,13 @@ class DoublyLinkedList:
     """
     def add_to_tail(self, value):
         new_node = ListNode(value)
+        self.length += 1
 
         # if list has a tail (I assume list also has a head)
         if self.tail:
             self.tail.next = new_node # point tail .next to new_node
             new_node.prev = self.tail # point new_node .prev to old tail
             self.tail = new_node # point tail to be new_node
-            self.length += 1
         
         # if list has no tail (I assume no head either)
         else:
@@ -89,7 +95,23 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        current_tail = self.tail
+        # if head and tail are the same
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+
+        # checking for empty pointers, if tail exists, i assume head does as well
+        if self.tail:
+            self.tail = self.tail.prev
+            self.tail.next = None
+        else:
+            return None
+
+        self.length -= 1
+        return current_tail.value
+
+
             
     """
     Removes the input node from its current spot in the 
@@ -110,34 +132,30 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        # if list is empty
-        if self.head is None:
+        # if list is empty (checking for empty pointers)
+        if self.head and self.tail is None:
             return None
+            
+        self.length -= 1
         
         # if list has one item, assuming head == tail
         if self.head == self.tail:
             self.head = None
             self.tail = None
-            self.length -= 1
 
         # if list has two+ items and we remove head
         if node == self.head:
             self.head = node.next
             self.head.prev = None
-            self.length -= 1
 
         # if list has two+ items and we remove tail
         if node == self.tail:
             self.tail = node.prev
             self.tail.next = None
-            self.length -= 1
 
         # if list has two+ items, and removing any node other than head or tail
         else:
-            if node.prev:
-                node.prev.next = node.next # point node .prev .next value to nodes next value
-            if node.next:
-                node.next.prev = node.prev # point node .next .prev value to nodes .prev value
+            node.delete()
 
 
     """
