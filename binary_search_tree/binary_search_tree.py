@@ -21,17 +21,17 @@ class BSTNode:
         if self.value is None:
             self.value = value
 
-        if value >= self.value:
-            if self.right is None:
-                self.right = BSTNode(value)
-            else:
-                self.right.insert(value)
+        if value >= self.value: # if passed in value is greater than current checked value
+            if self.right is None: # if right side is available
+                self.right = BSTNode(value) # number is greater, we add number to the right
+            else: # if right side is not available
+                self.right.insert(value) # recursive function, basically repeating the above steps
 
-        if value <= self.value:
-            if self.left is None:
-                self.left = BSTNode(value)
-            else: # meaning self.left actually has a value
-                self.left.insert(value)
+        if value <= self.value: # if passed in value is less than current checked value
+            if self.left is None: # if left side is available
+                self.left = BSTNode(value) # number is less, we add number to the left
+            else: # if left side is not available
+                self.left.insert(value) # recursive function, basically repeating the above steps
 
 
     # Return True if the tree contains the value
