@@ -37,12 +37,33 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # if one node in tree, check to see if passed in value equals the only node
+        if target == self.value:
+            return True
+
+        # if multiple nodes in tree, compare target with root node, then go left or right
+        if target > self.value:
+            # go right, if self.right == None, we have traversed the list, return false
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target) # why did returning this statement work, but without the 'return' it does not work??????? o.O
+
+        if target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
-    # in a BST, the maximum value will always be the bottom-most right value
+        # in a BST, the maximum value will always be the bottom-most right value
+        current = self
+        while (current.right):
+            current = current.right        
+        return current.value
+    
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
