@@ -59,20 +59,33 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
         # in a BST, the maximum value will always be the bottom-most right value
-        current = self
-        while (current.right):
-            current = current.right        
-        return current.value
+        # recursive solution
+        if self.right is None: # base case
+            return self.value
+        else: 
+            return self.right.get_max() # recursive case: make problem smaller to get to base case
+
+        # iterative solution
+        # current_node = self # start with root
+        # while current_node.right is not None: # go right until self.right is None
+        #     current_node = current_node.right # point cur_node to right most node avail
+        # return current_node.value # return cur_node.val because max value is right most node
+
+
     
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        
-        fn(self.value)
-        if self.right:
-            self.right.for_each(fn)
-        if self.left:
+        fn(self.value) # every time fn function is invoked, self.value is appended to list
+        if self.right: # if self.right value exists, 
+            self.right.for_each(fn) # invoke for_each on self.right 
+        if self.left: # both if statements will run since it is not an if/elif 
             self.left.for_each(fn)
+
+
+
+
+        
 
     # Part 2 -----------------------
 
